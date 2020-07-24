@@ -96,7 +96,7 @@
 			else
 			{
 				?> <div style= "width:50px;height:42px;border:0;position: fixed;top: 20%; left: 3%;font-size: 18px;">
-		<font color="white"><?php echo "Teacher ids not matching";?></font></div><?php
+		<font color="white"><?php echo "Student ids not matching";?></font></div><?php
 			}
 		}
 		else

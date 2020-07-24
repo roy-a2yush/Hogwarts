@@ -15,7 +15,7 @@
 
 	mysqli_select_db($con,$db);
 
-	$sql="SELECT `id`, `fname`, `lname`, `phoneNo`, `gender`, `email`, `class` FROM `Student`";
+	$sql="SELECT * FROM `student`";
 	$dataRow="";
 	$result = mysqli_query($con,$sql);
 	
@@ -44,12 +44,11 @@
 		<table align="center">
 			<tr>
 				<th>id</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>phoneNo</th>
-				<th>gender</th>
+				<th>Name</th>
 				<th>email</th>
-				<th>class</th>
+				<th>Class</th>
+				<th>phoneNo</th>
+				<th>teamID</th>
 			</tr>
 			<?php while($row1 = mysqli_fetch_array($result)):; ?>
 				<tr>
@@ -59,7 +58,6 @@
 					<td><?php echo$row1[3]; ?></td>
 					<td><?php echo$row1[4]; ?></td>
 					<td><?php echo$row1[5]; ?></td>
-					<td><?php echo$row1[6]; ?></td>
 				</tr>
 			<?php endwhile; ?>
 		</table>

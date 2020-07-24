@@ -19,7 +19,7 @@
 		<form method="POST" action="#">
 			<h1>Delete Account type</h1>
 			<input type="submit" name="teacher" value="TEACHER" formaction="deleteTeacher.php" />
-	   		<input type="submit" name="staff" value="STAFF" formaction="deleteStaff.php" />
+	   		<input type="submit" name="staff" value="TEAM" formaction="deleteStaff.php" />
 			<input type="submit" name="student" value="STUDENT" formaction="deleteStudent.php" />
 		</form>
 	</div>

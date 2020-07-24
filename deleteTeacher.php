@@ -77,7 +77,7 @@
 
 
 
-					$sql="SELECT `username` FROM `Teacher` WHERE id = '$Tid'";
+					$sql="SELECT `username` FROM `Teacher` WHERE tid = '$Tid'";
 					$result = $con->query($sql);
 					if ($result->num_rows > 0)
 					{
@@ -87,9 +87,9 @@
 						}
 					}
 
+					//$sqlLogin=""
 
-
-					$sql = "DELETE from Teacher WHERE id = '$Tid'";
+					$sql = "DELETE from Teacher WHERE username = '$Tid'";
 					$result = mysqli_query($con,$sql);
 					if($result)
 					{

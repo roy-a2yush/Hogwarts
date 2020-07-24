@@ -1,7 +1,7 @@
 	<!DOCTYPE html>
 <html>
 <head>
-	<title>Delete Staff</title>
+	<title>Delete Team</title>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
@@ -17,12 +17,12 @@
 	<div class="loginbox" style="top: 400px; height: 570px; width: 400px;">
 		<img src="p2.png" class="avatar">
 		<form action="#" method="POST">
-			<p>Enter the <strong>id</strong> of the Staff you want to <strong style="color: pink">delete</strong>.</p>
+			<p>Enter the <strong>id</strong> of the Team you want to <strong style="color: pink">delete</strong>.</p>
 			<input type="text" name="Tid" placeholder="0">
-			<p>Re-enter the <strong>id</strong> of the Staff you want to <strong style="color: pink">delete.</strong></p>
+			<p>Re-enter the <strong>id</strong> of the Team you want to <strong style="color: pink">delete.</strong></p>
 			<input type="text" name="RTid" placeholder="0">
 			<br>
-			<p>Type "yes" if you want to delete the Staff details. <strong style="color: pink">NOTE: THIS ACTION CANNOT BE UNDONE.</strong></p>
+			<p>Type "yes" if you want to delete the Team details. <strong style="color: pink">NOTE: THIS ACTION CANNOT BE UNDONE.</strong></p>
 			<input type="text" name="agree" placeholder="No">
 			<br><br>
 			<p>Enter password</p>
@@ -74,7 +74,7 @@
 			{
 				if($agree=="Yes" || $agree =="yes")
 				{
-					$sql = "DELETE from Staff WHERE id = '$Tid'";
+					$sql = "DELETE from Team WHERE teamid = '$Tid'";
 					$result = mysqli_query($con,$sql);
 					if($result)
 					{
@@ -96,7 +96,7 @@
 			else
 			{
 				?> <div style= "width:50px;height:42px;border:0;position: fixed;top: 20%; left: 3%;font-size: 18px;">
-		<font color="white"><?php echo "Staff ids not matching";?></font></div><?php
+		<font color="white"><?php echo "Team ids not matching";?></font></div><?php
 			}
 		}
 		else

@@ -19,7 +19,7 @@
 		<form method="POST" action="#">
 			<h1>Insert Account type</h1>
 			<input type="submit" name="teacher" value="TEACHER" formaction="insertTeacher.php" />
-	   		<input type="submit" name="staff" value="STAFF" formaction="insertst.php" />
+			<br><br><br><br>
 			<input type="submit" name="student" value="STUDENT" formaction="insertstu.php" />
 		</form>
 	</div>

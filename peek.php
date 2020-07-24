@@ -19,7 +19,7 @@
 		<form method="POST" action="#">
 			<h1>Peek Account type</h1>
 			<input type="submit" name="teacher" value="Teacher" formaction="peekTeacher.php" />
-	   		<input type="submit" name="staff" value="Staff" formaction="peekStaff.php" />
+	   		<input type="submit" name="staff" value="Team" formaction="peekStaff.php" />
 			<input type="submit" name="student" value="Student" formaction="peekStudent.php" />
 		</form>
 	</div>

@@ -19,7 +19,7 @@
 		<form method="POST" action="#">
 			<h1>Update Account type</h1>
 			<input type="submit" name="teacher" value="TEACHER" formaction="updateTeacher.php" />
-	   		<input type="submit" name="staff" value="STAFF" formaction="updateStaff.php" />
+	   		<br><br><br><br>
 			<input type="submit" name="student" value="STUDENT" formaction="updateStudent.php" />
 		</form>
 	</div>
