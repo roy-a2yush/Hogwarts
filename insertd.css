@@ -54,7 +54,7 @@ h1{
 	margin-bottom: 20px;
 }
 
-.loginbox input[type="text"],  input[type="email"], input[type="number"]
+.loginbox input[type="text"],  input[type="email"], input[type="number"], input[type="tel"]
 {
 	border: none;
 	border-bottom: 1px solid #fff;

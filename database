@@ -1,8 +1,8 @@
 sql:
 	login:
-		id
-		uname
-		pass
+		id:
+		uname: PK
+		pass: 
 
 	Student:
 		id
@@ -13,11 +13,11 @@ sql:
 		email
 
 	Teacher:
-		id
-		fname
-		lname
-		phone
-		class
+		id: AI PK
+		fname: Not null
+		lname: Not null
+		phone: Not null
+		class:
 		email
 
 	Team:
@@ -32,10 +32,6 @@ sql:
 		ProblemStatement: Null
 		Approval: Null
 		Completed: 0
-
-	Status-map:
-		Teamid:
-		StatusId:
 
 	Status:
 		Statusid:

@@ -34,13 +34,11 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style="background: #000; color:#fff;">
       <div class="card-body" style="background: #000; color:#fff; border-left-style: solid; border-color: red">
         <p>Student ID</p>
-			<input type="number" name="Sid" placeholder="Enter StudentID">
-			<p>First name</p>
-			<input type="text" name="FName" placeholder="Enter First Name">
-			<p>Last name</p>
-			<input type="text" name="LName" placeholder="Enter Last Name">
+			<input type="number" name="Sid1" placeholder="Enter StudentID">
+			<p>Name</p>
+			<input type="text" name="FName1" placeholder="Enter Name">
 			<p>Phone number</p>
-			<input type="number" name="phoneNo" placeholder="9999999999">
+			<input style="background: #000; color: #fff; border: none; border-bottom: 1px solid #fff;background: transparent; outline: none; height: 40px; color: #fff;	font-size: 16px;" type="tel" placeholder="Phone no" name="phoneNo"  pattern="[0-9]{10}" title="Enter your Phone no." required/>
       </div>
     </div>
   </div>
@@ -56,12 +54,8 @@
       <div class="card-body" style="background: #000; color:#fff; border-left-style: solid; border-color: red">
         <p>Student ID</p>
 			<input type="number" name="Sid" placeholder="Enter StudentID">
-			<p>First name</p>
-			<input type="text" name="FName" placeholder="Enter First Name">
-			<p>Last name</p>
-			<input type="text" name="LName" placeholder="Enter Last Name">
-			<p>Phone number</p>
-			<input type="number" name="phoneNo" placeholder="9999999999">
+			<p>Name</p>
+			<input type="text" name="FName" placeholder="Enter Name">
       </div>
     </div>
   </div>
@@ -77,12 +71,8 @@
       <div class="card-body">
         <p>Student ID</p>
 			<input type="number" name="Sid" placeholder="Enter StudentID">
-			<p>First name</p>
-			<input type="text" name="FName" placeholder="Enter First Name">
-			<p>Last name</p>
-			<input type="text" name="LName" placeholder="Enter Last Name">
-			<p>Phone number</p>
-			<input type="number" name="phoneNo" placeholder="9999999999">
+			<p>Name</p>
+			<input type="text" name="FName" placeholder="Enter Name">
       </div>
     </div>
   </div>
@@ -98,12 +88,8 @@
       <div class="card-body">
         <p>Student ID</p>
 			<input type="number" name="Sid" placeholder="Enter StudentID">
-			<p>First name</p>
-			<input type="text" name="FName" placeholder="Enter First Name">
-			<p>Last name</p>
-			<input type="text" name="LName" placeholder="Enter Last Name">
-			<p>Phone number</p>
-			<input type="number" name="phoneNo" placeholder="9999999999">
+			<p>Name</p>
+			<input type="text" name="FName" placeholder="Enter Name">
       </div>
     </div>
   </div>
