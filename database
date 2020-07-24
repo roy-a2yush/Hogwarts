@@ -21,22 +21,23 @@ sql:
 		email
 
 	Team:
-		Sid:
-		Tid:
-		Teamid:
-		Tname:
-		fileAddress:
-		ProblemStatement:
-		Approval:
-		Completed:
+		Sid1: Not null
+		Sid2: Not null
+		Sid3: Null
+		Sid4: Null
+		Tid: Null
+		Teamid: AI PK
+		Tname: Null
+		fileAddress: Null
+		ProblemStatement: Null
+		Approval: Null
+		Completed: 0
 
 	Status-map:
 		Teamid:
-		Teachid:
 		StatusId:
 
 	Status:
 		Statusid:
-		Tid:
 		StatusName:
 		Marks:

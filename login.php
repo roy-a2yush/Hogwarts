@@ -10,8 +10,7 @@
 		<label>Select account type  </label>
         <select name="accountType">
         	<option value = "Teacher" selected="selected">Teacher</option>
-            <option value = "Student">Student</option>
-            <option value = "Staff">Staff</option>
+            <option value = "Student">Student Team</option>
             <option value = "Admin">Admin</option>
         </select>
         <br><br>
