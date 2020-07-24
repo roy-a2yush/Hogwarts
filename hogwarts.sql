@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2020 at 10:56 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: Jul 24, 2020 at 04:10 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,19 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hogwarts`
+-- Database: `hogwartss`
 --
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `peekStaff` ()  NO SQL
-BEGIN
-		SELECT id, fname, lname, phoneNo, gender, deptAlloted, salary FROM Staff;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -40,16 +29,9 @@ DELIMITER ;
 
 CREATE TABLE `login` (
   `Sid` int(11) NOT NULL,
-  `uname` varchar(50) NOT NULL,
-  `pass` varchar(20) NOT NULL
+  `uname` varchar(100) NOT NULL,
+  `pass` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`Sid`, `uname`, `pass`) VALUES
-(0, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -58,48 +40,23 @@ INSERT INTO `login` (`Sid`, `uname`, `pass`) VALUES
 --
 
 CREATE TABLE `marks` (
-  `Sid` int(11) NOT NULL,
-  `class` int(11) NOT NULL,
-  `Tid` int(11) DEFAULT NULL,
-  `History` int(11) DEFAULT NULL,
-  `Transfiguration` int(11) DEFAULT NULL,
-  `DADA` int(11) DEFAULT NULL,
-  `Potions` int(11) DEFAULT NULL,
-  `Percentage` float DEFAULT NULL
+  `teamid` int(11) NOT NULL,
+  `marks` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- Table structure for table `status`
 --
 
-CREATE TABLE `staff` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `phoneNo` char(10) NOT NULL,
-  `gender` char(1) NOT NULL,
-  `deptAlloted` varchar(50) NOT NULL,
-  `salary` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL
+CREATE TABLE `status` (
+  `statusid` int(11) NOT NULL,
+  `teamid` int(11) NOT NULL,
+  `statusname` varchar(500) NOT NULL,
+  `maxmarks` int(11) NOT NULL,
+  `marksobtained` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Triggers `staff`
---
-DELIMITER $$
-CREATE TRIGGER `deleteStaffRecord` BEFORE DELETE ON `staff` FOR EACH ROW DELETE FROM login WHERE uname = old.username
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `deleteStudentRecord` BEFORE DELETE ON `staff` FOR EACH ROW DELETE FROM login WHERE uname = old.username
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `deleteTeacherRecord` BEFORE DELETE ON `staff` FOR EACH ROW DELETE FROM login WHERE uname = old.username
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -109,13 +66,11 @@ DELIMITER ;
 
 CREATE TABLE `student` (
   `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `phoneNo` char(10) NOT NULL,
-  `gender` char(1) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `class` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `class` varchar(100) NOT NULL,
+  `phoneno` varchar(11) NOT NULL,
+  `teamid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -125,15 +80,30 @@ CREATE TABLE `student` (
 --
 
 CREATE TABLE `teacher` (
-  `id` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `phoneNo` char(10) NOT NULL,
-  `gender` char(1) NOT NULL,
-  `subject` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `class` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL
+  `tid` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `teamid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team`
+--
+
+CREATE TABLE `team` (
+  `Sid1` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `teamid` int(11) NOT NULL,
+  `teamname` varchar(100) NOT NULL,
+  `fileaddress` varchar(500) NOT NULL,
+  `pstatement` varchar(500) NOT NULL,
+  `approval` varchar(100) NOT NULL,
+  `completed` int(11) NOT NULL,
+  `Sid2` int(11) NOT NULL,
+  `Sid3` int(11) DEFAULT NULL,
+  `Sid4` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,41 +111,48 @@ CREATE TABLE `teacher` (
 --
 
 --
--- Indexes for table `login`
+-- Indexes for table `marks`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`uname`);
+ALTER TABLE `marks`
+  ADD UNIQUE KEY `teamid` (`teamid`);
 
 --
--- Indexes for table `staff`
+-- Indexes for table `status`
 --
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`);
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`statusid`),
+  ADD KEY `teamid` (`teamid`);
 
 --
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`);
+  ADD KEY `tid` (`teamid`);
 
 --
 -- Indexes for table `teacher`
 --
 ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`);
+  ADD PRIMARY KEY (`tid`),
+  ADD KEY `teamid` (`teamid`);
+
+--
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`teamid`),
+  ADD UNIQUE KEY `teamname` (`teamname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `staff`
+-- AUTO_INCREMENT for table `status`
 --
-ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `status`
+  MODIFY `statusid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -187,29 +164,41 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `teamid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `staff`
+-- Constraints for table `marks`
 --
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`username`) REFERENCES `login` (`uname`);
+ALTER TABLE `marks`
+  ADD CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `team` (`teamid`);
+
+--
+-- Constraints for table `status`
+--
+ALTER TABLE `status`
+  ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `team` (`teamid`);
 
 --
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`username`) REFERENCES `login` (`uname`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `team` (`teamid`);
 
 --
 -- Constraints for table `teacher`
 --
 ALTER TABLE `teacher`
-  ADD CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`username`) REFERENCES `login` (`uname`);
+  ADD CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `team` (`teamid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
