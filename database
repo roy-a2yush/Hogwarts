@@ -1,0 +1,42 @@
+sql:
+	login:
+		id
+		uname
+		pass
+
+	Student:
+		id
+		fname
+		lname
+		phone
+		class
+		email
+
+	Teacher:
+		id
+		fname
+		lname
+		phone
+		class
+		email
+
+	Team:
+		Sid:
+		Tid:
+		Teamid:
+		Tname:
+		fileAddress:
+		ProblemStatement:
+		Approval:
+		Completed:
+
+	Status-map:
+		Teamid:
+		Teachid:
+		StatusId:
+
+	Status:
+		Statusid:
+		Tid:
+		StatusName:
+		Marks:
