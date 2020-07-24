@@ -10,7 +10,7 @@
 		<label>Select account type  </label>
         <select name="accountType">
         	<option value = "Teacher" selected="selected">Teacher</option>
-            <option value = "Student">Student Team</option>
+            <option value = "Student">Team</option>
             <option value = "Admin">Admin</option>
         </select>
         <br><br>
@@ -63,28 +63,30 @@ if(isset($_POST['username']) && isset($_POST['submit'])  && isset($_POST['accoun
 		}
 		elseif ($accType=='Teacher')
 		{
-			$sql="SELECT `SchoolID` FROM `login` WHERE uname = '$uname'";
+			$sql="SELECT `Sid` FROM `login` WHERE uname = '$uname'";
 			$result = $con->query($sql);
 
 			if ($result->num_rows > 0)
 			{
        			while($row = $result->fetch_assoc())
     			{
-        			$_SESSION['ID'] = $row['SchoolID'];
+        			$_SESSION['ID'] = $row['Sid'];
         			header("Location: teacherAccount.php");
     			}
 			}
 		}
 		elseif ($accType=='Student')
 		{
-			$sql="SELECT `SchoolID` FROM `login` WHERE uname = '$uname'";
+			echo"<h1 style='color:white;'>$uname</h1>";
+			$sql="SELECT `Sid` FROM `login` WHERE uname = '$uname'";
 			$result = $con->query($sql);
 
 			if ($result->num_rows > 0)
 			{
        			while($row = $result->fetch_assoc())
     			{
-        			$_SESSION['ID'] = $row['SchoolID'];
+        			$_SESSION['ID'] = $row['Sid'];
+        			$_SESSION['username'] = $uname;
         			header("Location: studentAccount.php");
     			}
 			}
