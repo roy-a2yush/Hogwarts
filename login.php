@@ -21,6 +21,7 @@
 		<input type="password" name="password" placeholder="Enter Password">
 		<br><br>
 		<input type="submit" name="submit" value="Login">
+		<center><a class="center" style="color: yellow;" href="register.php">Click here for team registration</a></center>
 	</form>
 
 </div>
