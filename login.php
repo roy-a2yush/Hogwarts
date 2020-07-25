@@ -79,7 +79,7 @@ if(isset($_POST['username']) && isset($_POST['submit'])  && isset($_POST['accoun
 		}
 		elseif ($accType=='Student')
 		{
-			echo"<h1 style='color:white;'>$uname</h1>";
+			//echo"<h1 style='color:white;'>$uname</h1>";
 			$sql="SELECT `Sid` FROM `login` WHERE uname = '$uname'";
 			$result = $con->query($sql);
 
