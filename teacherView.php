@@ -219,10 +219,7 @@
 <body>
 	<div class="Menu">
 		<ul>
-	 		<li><a class="active" href="studentAccount.php">Home</a></li>
-	  		<li><a href="insert.php" active>Status</a></li>
-	  		<li><a href="update.php">Upload</a></li>
-	  		<li><a href="delete.php">Change Password</a></li>
+	 		<li><a class="active" href="teacherAccount.php">Home</a></li>
 		</ul>
 	</div>
 
