@@ -8,8 +8,8 @@
 		//header("Location: logout.php");
 	}
 
-	if($_SESSION['ID'] != null) {
-		$ID = $_SESSION['ID'];
+	if($_SESSION['teamid'] != null) {
+		$ID = $_SESSION['teamid'];
 	}
 	$host = "localhost";
 	$user="root";
