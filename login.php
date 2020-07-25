@@ -73,6 +73,7 @@ if(isset($_POST['username']) && isset($_POST['submit'])  && isset($_POST['accoun
        			while($row = $result->fetch_assoc())
     			{
         			$_SESSION['ID'] = $row['Sid'];
+        			$_SESSION['username'] = $uname;
         			header("Location: teacherAccount.php");
     			}
 			}
