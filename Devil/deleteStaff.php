@@ -1,5 +1,6 @@
-<?php 
-session_start();
+
+     <?php 
+session_start(); //Home123
     if($_SESSION['ID'] != 'admin') {
         header("Location: logout.php");
     }
@@ -113,4 +114,4 @@ session_start();
 		
 
 	}
- ?>
+ ?>   
