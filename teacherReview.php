@@ -65,19 +65,10 @@
     			{
     			
 		?>
-		<form action="review1.php">
-			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></form>
+		
+			<a href="review1.php"><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></a><br><br>
 		<?php }} 
-		else
-			{
-				$ssl="SELECT review1 from marks where teamid='$teamid'";
-				$result=$con->query($ssl);
-				if($result->num_rows>0)
-				{
-					while($row = $result->fetch_assoc())
-					{
-				?><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1 Marks <?php echo $row['review1'];?></button>	
-			<?php}}}?>
+		?>
 
 
 		<!--review 2 button if not done/ review 1 marks -->
@@ -92,18 +83,9 @@
     			
 		?>
 		<form action="review1.php">
-			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></form>
+			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 2</button></form><br>
 		<?php }} 
-		else
-			{
-				$ssl="SELECT review1 from marks where teamid='$teamid'";
-				$result=$con->query($ssl);
-				if($result->num_rows>0)
-				{
-					while($row = $result->fetch_assoc())
-					{
-				?><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1 Marks <?php echo $row['review1'];?></button>	
-			<?php}}}?>
+		?>
 
 
 		<!--review 3 button if not done/ review 1 marks -->
@@ -118,18 +100,8 @@
     			
 		?>
 		<form action="review1.php">
-			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></form>
-		<?php }} 
-		else
-			{
-				$ssl="SELECT review1 from marks where teamid='$teamid'";
-				$result=$con->query($ssl);
-				if($result->num_rows>0)
-				{
-					while($row = $result->fetch_assoc())
-					{
-				?><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1 Marks <?php echo $row['review1'];?></button>	
-			<?php}}}?>
+			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 3</button></form><br><br>
+		<?php }} ?>
 
 
 		<!--Completed button-->

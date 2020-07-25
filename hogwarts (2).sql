@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2020 at 12:19 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: Jul 25, 2020 at 10:14 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,8 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`Sid`, `uname`, `pass`) VALUES
 (0, 'admin', 'admin'),
 (3, 'a@a.a', '123'),
-(5, 'deathEaters', '123');
+(5, 'deathEaters', '1234'),
+(4, 'shashi@gmail.com', 'shashi');
 
 -- --------------------------------------------------------
 
@@ -50,7 +51,10 @@ INSERT INTO `login` (`Sid`, `uname`, `pass`) VALUES
 
 CREATE TABLE `marks` (
   `teamid` int(11) NOT NULL,
-  `marks` int(11) NOT NULL DEFAULT 0
+  `marks` int(11) NOT NULL DEFAULT 0,
+  `review1` int(11) NOT NULL DEFAULT 0,
+  `review2` int(11) NOT NULL DEFAULT 0,
+  `review3` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,9 +66,9 @@ CREATE TABLE `marks` (
 CREATE TABLE `status` (
   `statusid` int(11) NOT NULL,
   `teamid` int(11) NOT NULL,
-  `statusname` varchar(500) NOT NULL,
-  `maxmarks` int(11) NOT NULL,
-  `marksobtained` int(11) NOT NULL
+  `review1` int(11) DEFAULT NULL,
+  `review2` int(11) DEFAULT NULL,
+  `review3` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -110,7 +114,8 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`tid`, `name`, `email`, `teamid`, `phoneNo`, `username`) VALUES
-(3, 'Snape', 'a@a.a', NULL, '9999999999', 'a@a.a');
+(3, 'Snape', 'a@a.a', NULL, '9999999999', 'a@a.a'),
+(4, 'Shashi', 'shashi@gmail.com', NULL, '6564676572', 'shashi@gmail.com');
 
 --
 -- Triggers `teacher`
@@ -133,8 +138,8 @@ CREATE TABLE `team` (
   `teamname` varchar(100) NOT NULL,
   `fileaddress` varchar(500) NOT NULL,
   `pstatement` varchar(500) NOT NULL,
-  `approval` varchar(100) NOT NULL,
-  `completed` int(11) NOT NULL,
+  `approval` int(10) NOT NULL DEFAULT 0,
+  `completed` int(11) NOT NULL DEFAULT 0,
   `Sid2` int(11) NOT NULL,
   `Sid3` int(11) DEFAULT NULL,
   `Sid4` int(11) DEFAULT NULL
@@ -145,8 +150,10 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`Sid1`, `tid`, `teamid`, `teamname`, `fileaddress`, `pstatement`, `approval`, `completed`, `Sid2`, `Sid3`, `Sid4`) VALUES
-(2, 3, 3, 'D', '', '', '', 0, 3, 4, 5),
-(0, 3, 5, 'deathEaters', '', '', '', 0, 6, 0, 0);
+(2, 3, 3, 'D', '', '', 0, 0, 3, 4, 5),
+(0, 3, 5, 'deathEaters', '', '', 0, 0, 6, 0, 0),
+(5, 4, 6, 'aurors', 'sfdxgcvc', 'dsfg', 1, 0, 6, NULL, NULL),
+(5, 4, 8, 'beasts', 'dxfcgvhbj', 'fgvh', 0, 1, 6, NULL, NULL);
 
 --
 -- Triggers `team`
@@ -202,7 +209,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `statusid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -214,13 +221,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `teamid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `teamid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
