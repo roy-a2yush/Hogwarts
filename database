@@ -1,8 +1,8 @@
 sql:
 	login:
-		id
-		uname
-		pass
+		id:
+		uname: PK
+		pass: 
 
 	Student:
 		id
@@ -13,30 +13,27 @@ sql:
 		email
 
 	Teacher:
-		id
-		fname
-		lname
-		phone
-		class
+		id: AI PK
+		fname: Not null
+		lname: Not null
+		phone: Not null
+		class:
 		email
 
 	Team:
-		Sid:
-		Tid:
-		Teamid:
-		Tname:
-		fileAddress:
-		ProblemStatement:
-		Approval:
-		Completed:
-
-	Status-map:
-		Teamid:
-		Teachid:
-		StatusId:
+		Sid1: Not null
+		Sid2: Not null
+		Sid3: Null
+		Sid4: Null
+		Tid: Null
+		Teamid: AI PK
+		Tname: Null
+		fileAddress: Null
+		ProblemStatement: Null
+		Approval: Null
+		Completed: 0
 
 	Status:
 		Statusid:
-		Tid:
 		StatusName:
 		Marks:

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+    if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +38,7 @@
 		</form>
 	</div>
 		<div class = "logout">
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </div>
@@ -77,7 +83,7 @@
 
 
 
-					$sql="SELECT `username` FROM `Teacher` WHERE id = '$Tid'";
+					$sql="SELECT `username` FROM `Teacher` WHERE tid = '$Tid'";
 					$result = $con->query($sql);
 					if ($result->num_rows > 0)
 					{
@@ -87,9 +93,9 @@
 						}
 					}
 
+					//$sqlLogin=""
 
-
-					$sql = "DELETE from Teacher WHERE id = '$Tid'";
+					$sql = "DELETE from Teacher WHERE username = '$Tid'";
 					$result = mysqli_query($con,$sql);
 					if($result)
 					{

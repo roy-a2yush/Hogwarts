@@ -1,6 +1,9 @@
 
 <?php 
-
+	session_start();
+    if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
 
 	$host = "localhost";
 	$user="root";
@@ -15,7 +18,7 @@
 
 	mysqli_select_db($con,$db);
 
-	$sql="SELECT `id`, `fname`, `lname`, `phoneNo`, `gender`, `subject`, `email`, `class` FROM `Teacher`";
+	$sql="SELECT * FROM `teacher`";
 	$dataRow="";
 	$result = mysqli_query($con,$sql);
 	
@@ -45,29 +48,23 @@
 		<table align="center">
 			<tr>
 				<th>id</th>
-				<th>First Name</th>
-				<th>Last Name</th>
+				<th>Name</th>
 				<th>phoneNo</th>
-				<th>gender</th>
-				<th>subject</th>
 				<th>email</th>
-				<th>class</th>
+				<th>username</th>
 			</tr>
 			<?php while($row1 = mysqli_fetch_array($result)):; ?>
 				<tr>
 					<td><?php echo$row1[0]; ?></td>
 					<td><?php echo$row1[1]; ?></td>
-					<td><?php echo$row1[2]; ?></td>
-					<td><?php echo$row1[3]; ?></td>
 					<td><?php echo$row1[4]; ?></td>
+					<td><?php echo$row1[2]; ?></td>
 					<td><?php echo$row1[5]; ?></td>
-					<td><?php echo$row1[6]; ?></td>
-					<td><?php echo$row1[7]; ?></td>
 				</tr>
 			<?php endwhile; ?>
 		</table>
 	</div>
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </body>

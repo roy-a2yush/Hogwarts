@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2020 at 04:10 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Jul 25, 2020 at 12:19 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hogwartss`
+-- Database: `hogwarts`
 --
 
 -- --------------------------------------------------------
@@ -32,6 +32,15 @@ CREATE TABLE `login` (
   `uname` varchar(100) NOT NULL,
   `pass` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`Sid`, `uname`, `pass`) VALUES
+(0, 'admin', 'admin'),
+(3, 'a@a.a', '123'),
+(5, 'deathEaters', '123');
 
 -- --------------------------------------------------------
 
@@ -68,10 +77,18 @@ CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `class` varchar(100) NOT NULL,
+  `class` varchar(100) DEFAULT NULL,
   `phoneno` varchar(11) NOT NULL,
   `teamid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `name`, `email`, `class`, `phoneno`, `teamid`) VALUES
+(5, 'Tom Riddle', 'iamvoldemort@hogwarts.com', NULL, '9900990000', NULL),
+(6, 'Gellart Grindelwald', 'grindelwald@hogwarts.com', NULL, '0000888897', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,8 +100,25 @@ CREATE TABLE `teacher` (
   `tid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `teamid` int(11) DEFAULT NULL
+  `teamid` int(11) DEFAULT NULL,
+  `phoneNo` char(10) NOT NULL,
+  `username` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`tid`, `name`, `email`, `teamid`, `phoneNo`, `username`) VALUES
+(3, 'Snape', 'a@a.a', NULL, '9999999999', 'a@a.a');
+
+--
+-- Triggers `teacher`
+--
+DELIMITER $$
+CREATE TRIGGER `deleteTeacherRecord` BEFORE DELETE ON `teacher` FOR EACH ROW DELETE FROM login WHERE uname = old.username
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -105,6 +139,22 @@ CREATE TABLE `team` (
   `Sid3` int(11) DEFAULT NULL,
   `Sid4` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `team`
+--
+
+INSERT INTO `team` (`Sid1`, `tid`, `teamid`, `teamname`, `fileaddress`, `pstatement`, `approval`, `completed`, `Sid2`, `Sid3`, `Sid4`) VALUES
+(2, 3, 3, 'D', '', '', '', 0, 3, 4, 5),
+(0, 3, 5, 'deathEaters', '', '', '', 0, 6, 0, 0);
+
+--
+-- Triggers `team`
+--
+DELIMITER $$
+CREATE TRIGGER `deleteTeamRecord` BEFORE DELETE ON `team` FOR EACH ROW DELETE FROM login WHERE uname = old.teamname
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -158,19 +208,19 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `teamid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `teamid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+    if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +25,12 @@
 		<form method="POST" action="#">
 			<h1>Peek Account type</h1>
 			<input type="submit" name="teacher" value="Teacher" formaction="peekTeacher.php" />
-	   		<input type="submit" name="staff" value="Staff" formaction="peekStaff.php" />
+	   		<input type="submit" name="staff" value="Team" formaction="peekStaff.php" />
 			<input type="submit" name="student" value="Student" formaction="peekStudent.php" />
 		</form>
 	</div>
 	<div class = "logout">
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </div>

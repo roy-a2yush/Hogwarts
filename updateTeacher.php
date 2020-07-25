@@ -1,3 +1,9 @@
+<?php 
+session_start();
+    if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,26 +20,20 @@
 	  		<li><a href="peek.php">Peek</a></li>
 		</ul>
 	</div>
-	<div class="loginbox" style="top: 520px; height: 900px;">
+	<div class="loginbox" style="margin-top: 2%;margin-bottom: 1%;">
 		<form action="#" method="POST">
 			<img src="p2.png" class="avatar">
 			<p>Enter the teacher ID</p>
 			<input type="number" name="Tid" placeholder="9">
 			<br><br>
-			<p>Type the new fields</p><br><br>
+			<h3 style="color: red;">New Fields</h3>
 			<br><br>
-			<p>New First name</p>
+			<p>New Name</p>
 			<input type="text" name="FName" placeholder="Enter First Name">
-			<p>New Last name</p>
-			<input type="text" name="LName" placeholder="Enter Last Name">
 			<p>New Phone number</p>
-			<input type="text" name="phoneNo" placeholder="9999999999">
-			<p>New Subject</p>
-	  		<input type="text" name="subject" placeholder="Defense against the Dark Arts(DADA)">
+			<input style="background: #000; color: #fff; border: none; border-bottom: 1px solid #fff;background: transparent; outline: none; height: 40px; color: #fff;	font-size: 16px;" type="tel" placeholder="Phone no" name="phoneNo"  pattern="[0-9]{10}" title="Enter your Phone no." required/>
 			<p>New email</p>
 			<input type="email" name="email" placeholder="abc@xyz.com">
-			<p>New Class</p>
-			<input type="number" name="DepartmentAllotted" placeholder="7">
 			<br><br>
 			<p>Enter your password</p>
 			<input type="password" name="pass">
@@ -42,7 +42,7 @@
 		</form>
 	</div>
 	<div class = "logout">
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </div>
@@ -74,15 +74,12 @@
 		//}
 
 
-	if(isset($_POST['FName']) && isset($_POST['LName']) && isset($_POST['phoneNo']) && isset($_POST['email']) && isset($_POST['subject']) && $_POST['Tid'] && isset($_POST['DepartmentAllotted']) && isset($_POST['pass']))
+	if(isset($_POST['FName']) && isset($_POST['phoneNo']) && isset($_POST['email']) && isset($_POST['Tid']) && isset($_POST['pass']))
 	{
 		//entering
 		$Fname=$_POST['FName'];
-		$Lname=$_POST['LName'];
 		$phoneNo=$_POST['phoneNo'];
 		$email=$_POST['email'];
-		$subject=$_POST['subject'];
-		$deptAlloted=$_POST['DepartmentAllotted'];
 		$Tid=$_POST['Tid'];
 		$pass=$_POST['pass'];
 		
@@ -93,7 +90,7 @@
 
 		if (mysqli_num_rows($result)==1)
 		{
-			$sql = "UPDATE `Teacher` SET `fname`='$Fname',`lname`='$Lname',`phoneNo`='$phoneNo',`subject`='$subject',`email`='$email',`class`=$deptAlloted WHERE id = $Tid;";
+			$sql = "UPDATE `Teacher` SET `name`='$Fname',`phoneno`='$phoneNo',`email`='$email' WHERE tid = $Tid;";
 			$result = mysqli_query($con,$sql);	
 			$sql1 = "UPDATE Marks";
 			if($result)
