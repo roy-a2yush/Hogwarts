@@ -18,7 +18,7 @@
 	session_start();
 	$tid=$_SESSION['ID'];
 	$teamid=$_SESSION['teamid'];
-	$no=$_SESSION['no'];  			
+	$no=$_GET['no'];  			
 
  ?>
 
@@ -59,23 +59,55 @@ if($no==1){
 $marks=$_POST['Review'];
 $sql="UPDATE marks set review1='$marks' where teamid='$teamid'";
 $result=mysqli_query($con,$sql);
+
+$sql="SELECT * from status where teamid='$teamid'";
+$result=mysqli_query($con,$sql);
+if(mysqli_num_rows($result)==0)
+{
 $sql1="INSERT INTO `status` (`statusid`, `teamid`, `review1`, `review2`, `review3`) VALUES (NULL, '$teamid', '$marks', NULL, NULL)";
 $result1=mysqli_query($con,$sql1);
+}
+else{
+$sql1="UPDATE status set review1='$marks' where teamid='$teamid'";
+$result1=mysqli_query($con,$sql1);
+}
 }
 
 if($no==2){
 $marks=$_POST['Review'];
+
 $sql="UPDATE marks set review2='$marks' where teamid='$teamid'";
 $result=mysqli_query($con,$sql);
+
+$sql="SELECT * from status where teamid='$teamid'";
+$result=mysqli_query($con,$sql);
+if(mysqli_num_rows($result)==0)
+{
+$sql1="INSERT INTO `status` (`statusid`, `teamid`, `review1`, `review2`, `review3`) VALUES (NULL, '$teamid', NULL, '$marks', NULL)";
+$result1=mysqli_query($con,$sql1);
+}
+else{
 $sql1="UPDATE status set review2='$marks' where teamid='$teamid'";
 $result1=mysqli_query($con,$sql1);
+}
 }
 
 if($no==3){
 $marks=$_POST['Review'];
+
 $sql="UPDATE marks set review3='$marks' where teamid='$teamid'";
 $result=mysqli_query($con,$sql);
+
+$sql="SELECT * from status where teamid='$teamid'";
+$result=mysqli_query($con,$sql);
+if(mysqli_num_rows($result)==0)
+{
+$sql1="INSERT INTO `status` (`statusid`, `teamid`, `review1`, `review2`, `review3`) VALUES (NULL, '$teamid', NULL,NULL,'$marks')";
+$result1=mysqli_query($con,$sql1);
+}
+else{
 $sql1="UPDATE status set review3='$marks' where teamid='$teamid'";
 $result1=mysqli_query($con,$sql1);
+}
 }
 ?>

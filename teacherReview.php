@@ -66,14 +66,14 @@
     			
 		?>
 		
-			<a href="review1.php"><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></a><br><br>
+			<a href="review1.php?no=1"><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 1</button></a><br><br>
 		<?php }} 
 		?>
 
 
 		<!--review 2 button if not done/ review 1 marks -->
 		<?php 
-			$sql="SELECT teamid from marks where review1=0 and teamid='$teamid'";
+			$sql="SELECT teamid from marks where review2=0 and teamid='$teamid'";
 			$result = $con->query($sql);
 			$_SESSION['no']=2;
 			if ($result->num_rows > 0)
@@ -82,15 +82,15 @@
     			{
     			
 		?>
-		<form action="review1.php">
-			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 2</button></form><br>
+		<a href="review1.php?no=2">
+			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 2</button></a><br>
 		<?php }} 
 		?>
 
 
 		<!--review 3 button if not done/ review 1 marks -->
 		<?php 
-			$sql="SELECT teamid from marks where review1=0 and teamid='$teamid'";
+			$sql="SELECT teamid from marks where review3=0 and teamid='$teamid'";
 			$result = $con->query($sql);
 			$_SESSION['no']=3;
 			if ($result->num_rows > 0)
@@ -99,8 +99,8 @@
     			{
     			
 		?>
-		<form action="review1.php">
-			<button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 3</button></form><br><br>
+		
+			<a href="review1.php?no=3"><button class="button"  style="border: none;outline: none;height: 40px;width:60%;background: #fb2525;color: #fff;font-size: 18px;border-radius: 20px;" >Review 3</button></a><br><br>
 		<?php }} ?>
 
 
