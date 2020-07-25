@@ -33,7 +33,8 @@
 <?php
 
 session_start();
-
+session_destroy();
+session_start();
 $host="localhost";
 $user="root";
 $password="";
@@ -58,6 +59,7 @@ if(isset($_POST['username']) && isset($_POST['submit'])  && isset($_POST['accoun
 
 		if($accType=='Admin')
 		{
+			$_SESSION['ID'] = 'admin';
 			header("Location: process.php");
 			exit();	
 		}

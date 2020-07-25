@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +43,11 @@
 			<input type="password" name="password1" placeholder="Enter Password">
 			<p>Re-enter password</p>
 			<input type="password" name="password2" placeholder="Enter Password">
-			<input type="Submit" name="submit" value="Submit">
+			<input class="submit" type="Submit" name="submit" value="Submit">
 		</form>
 	</div>
 	<div class = "logout">
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </div>

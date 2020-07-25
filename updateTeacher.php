@@ -1,3 +1,9 @@
+<?php 
+session_start();
+    if($_SESSION['ID'] != 'admin') {
+        header("Location: logout.php");
+    }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +42,7 @@
 		</form>
 	</div>
 	<div class = "logout">
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </div>

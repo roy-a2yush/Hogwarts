@@ -10,6 +10,9 @@
 	mysqli_select_db($con,$db);
 
 	$ID=$_SESSION['ID'];
+	if($ID == null) {
+		header("Location: logout.php");
+	}
 	$username = $_SESSION['username'];
 	$_SESSION['ID'] = $ID;
 	$sql="SELECT `pass` FROM `login` WHERE uname = '$username'";
@@ -38,7 +41,7 @@
 	</div>
  	<div class="loginbox" style="height: 530px; top: 380px;">
 		<img src="p2.png" class="avatar">
-		<h4>Change Password</h4>
+		<h1><strong>Change Password</strong></h1>
 		<br>
 		<form action="#" method="POST">
 			<p>Enter current password</p>
@@ -50,7 +53,7 @@
 			<input type="submit" name="change" value="Confirm Change">
 		</form>
 	</div>
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
  </body>

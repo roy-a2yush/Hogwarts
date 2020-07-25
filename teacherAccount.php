@@ -12,24 +12,22 @@ mysqli_select_db($con,$db);
 
 
 	$ID = $_SESSION['ID'];
-	$sql="SELECT * FROM `Teacher` WHERE id = $ID";
+	if($ID == null) {
+		header("Location: logout.php");
+	}
+	$sql="SELECT * FROM `Teacher` WHERE tid = $ID";
 	$result = $con->query($sql);
 	if ($result->num_rows > 0)
 	{
 		while($row = $result->fetch_assoc())
 		{
-			$fname=$row['fname'];
-			$lname=$row['lname'];
+			$fname=$row['name'];
 			$phoneNo=$row['phoneNo'];
-			$gender=$row['gender'];
-			$subject=$row['subject'];
 			$email=$row['email'];
-			$class=$row['class'];
 			$username=$row['username'];
 		}
     }
     $_SESSION['username']=$username;
-    $_SESSION['class']=$class;	
     $_SESSION['ID']=$ID;
  ?>
 
@@ -42,16 +40,15 @@ mysqli_select_db($con,$db);
 <body>
 	<div class="loginbox">
 		<img src="p2.png" class="avatar">
-		<h1>Welcome <strong><?php echo "$fname $lname" ?></strong></h1>
-		<h4>Class Teacher of class <?php echo $class ?></h4>
+		<h1>Welcome <strong><?php echo "$fname" ?></strong></h1>
 		<br>
 		<form action="#" method="POST">
-			<input type="submit" name="change" value="Peek Marks" formaction="peekMarks.php">
-			<input type="submit" name="Marks" value="Enter Marks" formaction="enterMarks.php">
+			<input type="submit" name="change" value="Teams" formaction="peekMarks.php">
+			<input type="submit" name="Marks" value="Statistics" formaction="enterMarks.php">
 			<input type="submit" name="change" value="Change password" formaction="change.php">
 		</form>
 	</div>
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </body>

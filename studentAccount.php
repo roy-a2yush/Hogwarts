@@ -12,6 +12,9 @@ mysqli_select_db($con,$db);
 
 
 	$ID = $_SESSION['ID'];
+	if($ID == null) {
+		header("Location: logout.php");
+	}
 	$username = $_SESSION['username'];
 	$sql="SELECT * FROM `team` WHERE teamid = $ID";
 	$result = $con->query($sql);
@@ -54,7 +57,7 @@ mysqli_select_db($con,$db);
 			<input type="submit" name="change" value="Change password" formaction="changeStu.php">
 		</form>
 	</div>
-	<a href="login.php">
+	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
 	</a>
 </body>
