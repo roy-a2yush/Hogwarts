@@ -1,3 +1,26 @@
+		<script>
+  function alertt() {
+    alert("You have logged out");
+  }
+</script>
+
+<?php 
+if (isset($_GET['status'])) {
+  $a = $_GET['status'];
+  if (isset($a) and $a == 0) {
+?>
+    <script>
+      alertt();
+    </script>
+
+
+
+<?php
+  }
+}
+
+ ?>
+
 <html>
 <head>
 <title>Login</title>

@@ -286,7 +286,19 @@
 		</ul>
 		</div>
 		<?php 
-			$total = $review1 + $review2 + $review3 + $finalMarks;
+		$total = 0;
+			if($review1 > 0) {
+				$total = $total + $review1;
+			}
+			if($review2> 0) {
+				$total = $total + $review2;
+			}
+			if($review3 > 0) {
+				$total = $total + $review3;
+			}
+			if($finalMarks > 0) {
+				$total = $total + $finalMarks;
+			}
 			$sqlMarksCheck = "Select * from marks where teamid = $ID";
 			$resultMarksCheck = $con->query($sqlMarksCheck);
 			if ($resultMarksCheck->num_rows > 0) {
@@ -304,7 +316,8 @@
 		 <br><br><br>
 		<a href="teacherReview.php"><input type="submit" name="Marks" value="Edit/Review" ></a>
 	<?php } ?>
-		<a href="teacherFileView.php"><input type="submit" name="Marks" value="View Files" ></a>
+		<?php $_SESSION['username'] = $teamname; ?>
+		<a href="filesT.php"><input type="submit" name="Marks" value="View Files" ></a>
 	</div>
 	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">

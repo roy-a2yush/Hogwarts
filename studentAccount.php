@@ -52,7 +52,7 @@ mysqli_select_db($con,$db);
 		<h1>Welcome <strong><?php echo "$teamname" ?></strong></h1>
 		<br>
 		<form action="#" method="POST">
-			<input type="submit" name="change" value="Upload" formaction="seeMarks.php">
+			<input type="submit" name="change" value="Upload" formaction="files.php">
 			<input type="submit" name="change" value="Status" formaction="teamStatus.php">
 			<input type="submit" name="change" value="Change password" formaction="changeStu.php">
 		</form>

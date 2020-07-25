@@ -94,7 +94,9 @@
     </div>
   </div>
 </div>
-
+			<p>Enter Problem statement</p>
+			<input type="text" name="problemStmt" placeholder="Enter Problem statement" required>
+			
 			<br><br>
 			<p>Enter Team password</p>
 			<input type="password" name="password1" placeholder="Enter Password">
@@ -140,7 +142,7 @@
 		//}
 
 
-	if(isset($_POST['teamName']) && isset($_POST['FName1']) && isset($_POST['phoneNo']) && isset($_POST['Sid1']) && isset($_POST['FName2']) && isset($_POST['Sid2']) && isset($_POST['password1']) && isset($_POST['password2']))
+	if(isset($_POST['teamName']) && isset($_POST['FName1']) && isset($_POST['phoneNo']) && isset($_POST['Sid1']) && isset($_POST['FName2']) && isset($_POST['Sid2']) && isset($_POST['password1']) && isset($_POST['password2']) && isset($_POST['problemStmt']))
 	{
 		//entering
 		$flag1=1;
@@ -153,6 +155,7 @@
 		$phoneNo=$_POST['phoneNo'];
 		$sqlVerify1 = "Select * from Student where id = $Sid1";
 		$result1 = mysqli_query($con,$sqlVerify1);
+		$problemStmt = $_POST['problemStmt'];
 		while($row1 = mysqli_fetch_array($result1)) {
 			$dbName = $row1['name'];
 			$dbPhone = $row1['phoneno'];
@@ -252,7 +255,7 @@
 				$sql = "INSERT INTO `login`(`uname`, `pass`, `Sid`) VALUES ('$teamName','$password1',0)";
 				$result = mysqli_query($con,$sql);
 
-				$sql = "INSERT INTO `team` (`Sid1`, `tid`, `teamid`, `teamname`, `fileaddress`, `pstatement`, `approval`, `completed`, `Sid2`, `Sid3`, `Sid4`) VALUES ('Sid1', '3', NULL, '$teamName', '', '', '', '0', '$Sid2', '$Sid3', '$Sid4');";
+				$sql = "INSERT INTO `team` (`Sid1`, `tid`, `teamid`, `teamname`, `fileaddress`, `pstatement`, `approval`, `completed`, `Sid2`, `Sid3`, `Sid4`) VALUES ('$Sid1', '5', NULL, '$teamName', '', '$problemStmt', '', '0', '$Sid2', '$Sid3', '$Sid4');";
 				$result = mysqli_query($con,$sql);	
 
 				$sql="SELECT `teamid` FROM `team` WHERE teamname = '$teamName'";

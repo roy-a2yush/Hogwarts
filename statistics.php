@@ -34,7 +34,7 @@
 <body>
 	<div class="Menu">
 		<ul>
-	 		<li><a class="active" href="teacher_dashboard.php">Home</a></li>
+	 		<li><a class="active" href="teacherAccount.php">Home</a></li>
 	  		
 		</ul>
 	</div>

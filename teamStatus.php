@@ -284,8 +284,21 @@
 			</li>
 		</ul>
 		</div>
-		<?php 
-			$total = $review1 + $review2 + $review3 + $finalMarks;
+		<?php
+		$total = 0;
+			if($review1 > 0) {
+				$total = $total + $review1;
+			}
+			if($review2> 0) {
+				$total = $total + $review2;
+			}
+			if($review3 > 0) {
+				$total = $total + $review3;
+			}
+			if($finalMarks > 0) {
+				$total = $total + $finalMarks;
+			}
+			//$total = $review1 + $review2 + $review3 + $finalMarks;
 			$sqlMarksCheck = "Select * from marks where teamid = $ID";
 			$resultMarksCheck = $con->query($sqlMarksCheck);
 			if ($resultMarksCheck->num_rows > 0) {
