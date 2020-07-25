@@ -307,6 +307,7 @@
 		 <br><br><br>
 		<a href="teacherReview.php"><input type="submit" name="Marks" value="Edit/Review" ></a>
 	<?php } ?>
+		<a href="teacherFileView.php"><input type="submit" name="Marks" value="View Files" ></a>
 	</div>
 	<a href="logout.php">
   		<img src="p3.png" alt="Logout" style="width:50px;height:42px;border:0;position: fixed;top: 8px;right: 16px;font-size: 18px;">
